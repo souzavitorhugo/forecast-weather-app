@@ -1,0 +1,81 @@
+:root {
+  --background-sunny: #a1bff4
+}
+
+.box-teste{
+  border: 2px solid black;
+}
+
+.main-container{
+  width: 100%;
+  max-width: 800px;
+
+  padding: 15px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin: 0 auto;
+}
+
+.container-tempo-atual{
+  width: 100%;
+  border-radius: 10px;
+
+  padding: 15px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--background-sunny);
+  color: white;
+}
+
+.container-tempo-secundario{
+  width: 100%;
+  padding: 15px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-tempo-secundario i{
+  color: var(--background-sunny)
+}
+
+.container-infos-atuais{
+  display: flex;
+  flex-direction: column;
+  
+
+  width: 80%;
+}
+
+.container-tempo-atual p{
+  font-size: 18px
+}
+
+.container-tempo-atual h1{
+  font-size: 50px;
+  margin-left: -30px;
+}
+
+.grausCelsius{
+  width: 15px;
+  height: 15px;
+}
+
+.cloudImage{
+  max-height: 100px;
+  min-width: 85px;
+}
+
+.icon-small{
+  width: 35px;
+}
