@@ -4,38 +4,42 @@ import cloudImage from '../appends/cloud.png';
 
 //vai existir uma funcao que vai buscar o tempo atual, armazenar em uma variável e trocar o icone conforme o tmepo atual, temperatura e local e dia a mesma coisa 
 
+const setarDataAtual = (setDataAtual) => {
+    let dataLocal = new Date().toLocaleDateString(),
+    mesSelecionado,
+    meses = [
+        "Janeiro",
+        "Fevereiro",
+        "Março",
+        "Abril",
+        "Maio",
+        "Junho",
+        "Julho",
+        "Agosto",
+        "Setembro",
+        "Outubro",
+        "Novembro",
+        "Dezembro"
+    ]; 
+
+    dataLocal = dataLocal.split('/')
+    mesSelecionado = dataLocal[1]
+    mesSelecionado = parseInt(mesSelecionado)
+    
+    for(let i = 0; i<=meses.length; i++) {
+        if( i === mesSelecionado){
+            setDataAtual(dataLocal[0]+ ' de ' + meses[i - 1]  + ' de ' + dataLocal[2])
+        } 
+    }
+}
+
 export default function TempoAtual()  {
 
     const [tempoClima, setTempoClima] = useState();
     const [dataAtual, setDataAtual] = useState();
-
+    
     useEffect(() => {
-        let dataLocal = new Date().toLocaleDateString(),
-        mesSelecionado,
-        meses = [
-            "Janeiro",
-            "Fevereiro",
-            "Março",
-            "Abril",
-            "Maio",
-            "Junho",
-            "Julho",
-            "Agosto",
-            "Setembro",
-            "Outubro",
-            "Novembro",
-            "Dezembro"
-        ]; 
-
-        dataLocal = dataLocal.split('/')
-        mesSelecionado = dataLocal[1]
-        mesSelecionado = parseInt(mesSelecionado)
-        
-        for(let i = 0; i<=meses.length; i++) {
-            if( i === mesSelecionado){
-                setDataAtual(dataLocal[0]+ ' de ' + meses[i - 1]  + ' de ' + dataLocal[2])
-            } 
-        }
+        setarDataAtual(setDataAtual);
     }, [])
 
     return (

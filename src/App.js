@@ -1,10 +1,8 @@
 import {Fragment} from 'react';
 
-import TempoAtual from './components/tempoAtual';
-import SunriseIcon from './appends/sunrise.png';
-import SunsetIcon from './appends/sunset.png';
-import GotaIcon from './appends/gotas-de-agua.png';
-
+import TempoAtual from './components/TempoAtual';
+import OpcaoDias from './components/OpcaoDias';
+import PaginaInicial from './components/PaginaInicial';
 
 import Menu from './components/nav'
 
@@ -15,6 +13,8 @@ function App() {
     <Fragment>
 
       <main className='main-container box-teste'>
+
+        <PaginaInicial/>
         
         <Menu/>
 
@@ -22,26 +22,12 @@ function App() {
 
         <TempoAtual/>
 
-        <div className='container-tempo-secundario'>
-          {/* aqui fica card da intensidade, nascer e por do sol e umidade*/}
-
-          <div className="box-teste">
-            <img className="icon-small" src={SunriseIcon} alt="icone nascer do sol"/>
-          </div>
-
-          <div className="box-teste">
-            <img className="icon-small" src={SunsetIcon} alt="icone por do sol"/>
-          </div>
-
-          <div className="box-teste">
-            <img className="icon-small" src={GotaIcon} alt="icone gota"/>
-          </div>
-          
-        </div>
+        <OpcaoDias/>
         
         <div>
           {/* aqui fica card das previsões dos próximos 5 dias */}
         </div>
+
       </main>
     </Fragment>
   );

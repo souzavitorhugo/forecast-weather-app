@@ -1,5 +1,8 @@
 :root {
-  --background-sunny: #a1bff4
+  --background-sunny: #a1bff4;
+  
+  --background-main: #f5f8fd;
+  --white: #ffff
 }
 
 .box-teste{
@@ -17,6 +20,8 @@
   justify-content: center;
 
   margin: 0 auto;
+
+  background-color: #f5f8fd;
 }
 
 .container-tempo-atual{
@@ -42,18 +47,17 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-}
+  justify-content: space-around;
 
-.container-tempo-secundario i{
-  color: var(--background-sunny)
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .container-infos-atuais{
   display: flex;
   flex-direction: column;
   
-
   width: 80%;
 }
 
@@ -78,4 +82,7 @@
 
 .icon-small{
   width: 35px;
+
+  padding-right: 0;
+  padding-left: 0;
 }
