@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function Menu() {
     return (
         <header>
@@ -11,12 +13,11 @@ export default function Menu() {
                     </button>
 
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div className="navbar-nav">
-                        <a className="nav-link active" aria-current="page" href="#">Home</a>
-                        <a className="nav-link" href="#">Features</a>
-                        <a className="nav-link" href="#">Pricing</a>
-                        <a className="nav-link disabled">Disabled</a>
-                    </div>
+                        <div className="navbar-nav">
+                            <a className="nav-link active" aria-current="page" href="#">Previsão Atual</a>
+                            <a className="nav-link" href="#">Previsão para 5 dias</a>
+                            <a className="nav-link" href="#">Previsão para uma semana</a>
+                        </div>
                     </div>
 
                 </div>

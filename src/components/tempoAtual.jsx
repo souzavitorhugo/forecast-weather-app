@@ -33,37 +33,46 @@ const setarDataAtual = (setDataAtual) => {
     }
 }
 
-export default function TempoAtual()  {
+export default function TempoAtual(props)  {
 
-    const [tempoClima, setTempoClima] = useState();
+    // const [tempoClima, setTempoClima] = useState();
+
     const [dataAtual, setDataAtual] = useState();
-    
+    const latitudeSis = props.latitude;
+    const longitudeSis = props.longitude;
+
     useEffect(() => {
         setarDataAtual(setDataAtual);
     }, [])
 
-    return (
+    let layout;
+
+    if(latitudeSis && longitudeSis){
+        layout = 
+
         <div className='container-tempo-atual'>
             {/* aqui ficará o card do tempo atual 
                 data, localização, temperatura e icone do tempo atual
                 e tipo do tempo
             */}
-
+    
             <div className="container-infos-atuais">
-
+    
             <small className="w-100"> {dataAtual} </small>
-
-            <p > <b> Criciúma, </b> Santa Catarina </p>
-
+    
+            <p >  </p>
+    
             <div className="d-flex flex-row w-100 justify-content-center">
                 <h1> 30°C </h1> 
                 {/* <img className="grausCelsius" src={grausCelsiusImage} alt="celcius" /> */}
             </div>
             
             </div>
-
+    
             <img className="cloudImage" src={cloudImage} alt="imagem geral"/>
+    
+        </div> 
+    } else {<div> <h1> deu pau </h1> </div>}
 
-        </div>
-    )
+    return layout
 }
