@@ -1,6 +1,6 @@
 import {Fragment, useEffect, useState} from 'react';
 
-import TempoAtual from './components/TempoAtual';
+import TempoAtual from './components/tempoAtual';
 import OpcaoDias from './components/OpcaoDias';
 import LoadingHolder from './components/loadingHolder';
 import PaginaInicial from './components/PaginaInicial';
