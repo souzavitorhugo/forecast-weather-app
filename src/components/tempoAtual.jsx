@@ -1,11 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Fragment } from 'react';
 
 import LoadingHolder from './loadingHolder';
 
-import cloudImage from '../appends/cloud.png';
-import { previsaoHojePrincipal } from '../actions/requisitons'
-
-//vai existir uma funcao que vai buscar o tempo atual, armazenar em uma variável e trocar o icone conforme o tmepo atual, temperatura e local e dia a mesma coisa 
+import OpcaoDias from './OpcaoDias';
 
 const setarDataAtual = (setDataAtual) => {
     let dataLocal = new Date().toLocaleDateString(),
@@ -34,63 +31,58 @@ const setarDataAtual = (setDataAtual) => {
             setDataAtual(dataLocal[0]+ ' de ' + meses[i - 1]  + ' de ' + dataLocal[2])
         } 
     }
-}
+};
+
+
 
 export default function TempoAtual(props)  {
-
-    const [tempoClima, setTempoClima] = useState();
-
     const [dataAtual, setDataAtual] = useState();
-    const latitudeSis = props?.latitude;
-    const longitudeSis = props?.longitude;
-    const [loading, setLoading] = useState(false)
+    const [tempoClima, setTempoClima] = useState();
+    const [loading, setLoading] = useState(false);
+    //fazer um state hook com as props aqui pra ficar atualizando smp que atualizarem as props 
+    const [dados, setDados] = useState({
+        cityName: "",
+        feelsLikeTemp: "",
+        sunrise_time: "",
+        sunset_time: "",
+        humidity: ""
+    });
 
     useEffect(() => {
         setarDataAtual(setDataAtual);
-
-        if(latitudeSis && longitudeSis) {
-            setLoading(true)
-
-            previsaoHojePrincipal(latitudeSis, longitudeSis, function(response) {
-                if(response.message) {
-                    window.alert(response.message)
-                }
-
-                setLoading(false)
-                setTempoClima(response)
-            })
-            //chama funcao do arquivo requisitions passando setTempoClima pra resposta ser setado na resposta, ou setar com cb
-        }
     }, [])    
 
     return (
-        <div className='container-tempo-atual'>
-            {console.log(tempoClima)}
+        <Fragment>
 
-            {/* aqui ficará o card do tempo atual 
-                data, localização, temperatura e icone do tempo atual
-                e tipo do tempo
-            */}
-    
-            <div className="container-infos-atuais">
-    
-                <small className="w-100"> {dataAtual} </small>
-        
-                <p > {tempoClima?.data.name} </p>
-        
-                <div className="d-flex flex-row w-100 justify-content-center">
-                    <div className="d-flex row justify-content-center align-items-center">
-                        <h1> {tempoClima?.data.main.temp}° </h1>
+            <LoadingHolder loading={!!loading} />
 
-                        <small> Sensação Térmica {tempoClima?.data.main.feels_like}° </small>
-                    </div>
-                    
-                </div>
+            <div className='container-tempo-atual'>
+        
+                <div className="container-infos-atuais">
+        
+                    <small className="w-100"> {dataAtual} </small>
             
-            </div>
-    
-            <img className="cloudImage" src={cloudImage} alt="imagem geral"/>
-    
-        </div> 
+                    <p > {dados?.dtoPrevisao.cityName} </p>
+            
+                    <div className="d-flex flex-row w-100 justify-content-start">
+                        <div className="d-flex row justify-content-center align-items-center">
+                            <h1> {dados?.dtoPrevisao.realTemp}° </h1>
+
+                            <small> Sensação Térmica {dados?.dtoPrevisao.feelsLikeTemp}° </small>
+                        </div>
+                        
+                    </div>
+                
+                </div>
+        
+                <div className="d-flex row align-items-center justify-content-center">
+                    <img className="cloudImage"  alt="imagem geral"/>
+                </div>
+        
+            </div> 
+
+            <OpcaoDias sunriseTime={dados?.dtoPrevisao.sunriseSunsetTime.sunrise_time} sunsetTime={dados?.dtoPrevisao.sunriseSunsetTime.sunset_time} humidity={dados?.dtoPrevisao.humidity}/>
+        </Fragment>
     )
 }
