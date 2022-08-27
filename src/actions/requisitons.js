@@ -9,18 +9,15 @@ export function previsaoLatLon (lat, long, callback) {
         .catch(function(err) {
             throw err;
         })
- }   
+};
 
-// export function previsaoGeolocation (cidade, callback) {
-//     Axios.get(`${API_URL_GEOCODING}?lat=${lat}&lon=${long}&appid=${API_KEY}${API_PADROES}`)
-//         .then(function(response) {
-//             callback(response);
-//         })
-//         .catch(function(err) {
-//             throw err;
-//         })
-// }   
+export function previsaoGeolocation(cidade, callback) {
+    Axios.get(`${API_URL}?q=${cidade}&appid=${API_KEY}${API_PADROES}`)
+        .then(function(response) {
+            callback(response)
+        })
+};
 
- export function montaLinkIconePrev(icon){
+export function montaLinkIconePrev(icon){
     return `${API_LINK_ICONS}/${icon}@2x.png`
-}
+};

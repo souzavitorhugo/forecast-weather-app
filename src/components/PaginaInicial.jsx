@@ -2,9 +2,19 @@ import Input from "./inputs"
 import {hasFormError } from './util'
 import {useFormik} from 'formik';
 
+import { previsaoGeolocation } from '../actions/requisitons';
+import TempoAtual from './tempoAtual';
+import LoadingHolder from './loadingHolder';
+ 
 import * as Yup from 'yup';
+import { useState, Fragment } from 'react';
+
+import { montaDtoPrevisaoTempo } from './util';
 
 export default function PaginaInicial() {
+
+    const [previsao, setPrevisao] = useState({});
+    const [loading, setLoading] = useState();
 
     const validationSchema = Yup.object({
         cidade: Yup.string().required('Campo Obrigatório')
@@ -16,30 +26,46 @@ export default function PaginaInicial() {
         }, 
         validationSchema,
         onSubmit: async values => {
-            console.log(values)
+            setLoading(true);
+            previsaoGeolocation(values.cidade, function(resp) {
+                if(!resp.status === 200){
+                    setLoading(false)
+                    window.alert(resp.message)  
+                } 
+
+                setPrevisao(montaDtoPrevisaoTempo(resp));
+                setLoading(false)
+            })
         }
-    })
+    });
 
     return (
-        <main className="px-5 py-2 d-flex row justify-content-center align-items-center">
-            <h1 className="w-100 text-center"> Bem Vindo ao Forecast Weather App </h1>
+        <Fragment>
 
-            <form onSubmit={formik.handleSubmit} className="mt-4 d-flex justify-content-between align-items-center" style={{maxWidth: '100%'}}> 
+            <LoadingHolder loading={!!loading} />
 
-                <Input
-                    id="cidade"
-                    type="cidade"
-                    label="Veja a previsão para sua Cidade"
-                    value={formik.values.cidade}
-                    onChange={formik.handleChange}
-                    error={hasFormError(formik, "cidade")}
-                />
+            <main className="px-5 py-2 d-flex row justify-content-center align-items-center">
+                <h1 className="w-100 text-center"> Bem Vindo ao Forecast Weather App </h1>
 
-                <button className="button-submit-cidade btn btn-sm btn-primary" variant="text" type="submit">Pesquisar</button>
+                <form onSubmit={formik.handleSubmit} className="mt-4 d-flex justify-content-between align-items-center" style={{maxWidth: '100%'}}> 
 
-            </form>
-                
+                    <Input
+                        id="cidade"
+                        type="cidade"
+                        label="Veja a previsão para sua Cidade"
+                        value={formik.values.cidade}
+                        onChange={formik.handleChange}
+                        error={hasFormError(formik, "cidade")}
+                    />
 
-        </main>
+                    <button className="button-submit-cidade btn btn-sm btn-primary" variant="text" type="submit">Pesquisar</button>
+
+                </form>
+                    
+            </main>
+
+            <TempoAtual name="container-previsao" className="hidden" dtoPrevisao={previsao}/>
+        </Fragment>
+
     )
 }
