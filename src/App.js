@@ -2,9 +2,9 @@ import { Fragment, useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
-import PaginaInicial from './pages/PaginaIniciaoSemLoc';
-import PaginaInicialLocalizada from './pages/PaginaInicialLocalizada';
-import PaginaPrevisaoLocalizacao from './pages/PaginaPrevisaoGeo'
+import PaginaInicial from './pages/PaginaIniciaoSemLoc/index';
+import PaginaInicialLocalizada from './pages/PaginaInicialLocalizada/index';
+import PaginaPrevisaoLocalizacao from './pages/PaginaPrevisaoGeo/index'
 
 import './css/App.css';
 
