@@ -16,6 +16,9 @@ export function previsaoGeolocation(cidade, callback) {
         .then(function(response) {
             callback(response)
         })
+        .catch (function(err) {
+            throw err;
+        })
 };
 
 export function montaLinkIconePrev(icon){

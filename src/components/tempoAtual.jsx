@@ -38,7 +38,6 @@ export default function TempoAtual(props)  {
     const [tempoClima, setTempoClima] = useState();
     const [loading, setLoading] = useState(false);
     //fazer um state hook com as props aqui pra ficar atualizando smp que atualizarem as props 
-    debugger;
     useEffect(() => {
         setarDataAtual(setDataAtual);
     }, [])    
@@ -68,7 +67,7 @@ export default function TempoAtual(props)  {
                 </div>
         
                 <div className="d-flex row align-items-center justify-content-center">
-                    <img className="cloudImage"  alt="imagem geral"/>
+                    <img className="cloudImage"  alt="imagem geral" src={props?.dtoPrevisao?.linkIcon}/>
                 </div>
         
             </div> 

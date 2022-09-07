@@ -33,6 +33,7 @@ export const montaDtoPrevisaoTempo = (props) => {
   dtoPrevisao.feelsLikeTemp = props.data.main.feels_like;
   dtoPrevisao.humidity = props.data.main.humidity;
   dtoPrevisao.linkIcon = montaLinkIconePrev(props.data.weather[0].icon);
+  dtoPrevisao.horaPrev = new Date()
 
   return dtoPrevisao
 };
