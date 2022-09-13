@@ -37,7 +37,7 @@ export default function PaginaInicialLocalizada(props) {
 
         <Fragment>
             <LoadingHolder loading={!!loading} />
-            <main className='main-container box-teste'>
+            <main className='main-container'>
                 <Menu />
                 <TempoAtual dtoPrevisao={previsao} />
             </main>
