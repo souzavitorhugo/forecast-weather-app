@@ -24,7 +24,7 @@ export default function PaginaPrevisaoLocalizacao() {
     return (
         <Fragment>
             <LoadingHolder loading={!!loading}/>
-            <main className='main-container box-teste'>
+            <main className='main-container'>
                 <Menu />
                 <TempoAtual dtoPrevisao={previsao} />
             </main>
