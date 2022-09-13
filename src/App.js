@@ -39,6 +39,15 @@ function App() {
             <Route path="/">
               <Route index element={<PaginaInicialLocalizada latitude={lat} longitude={long} />} />
             </Route>
+
+            <Route path="/cidade">
+              <Route index element={<PaginaInicial/>}/>
+            </Route>
+
+            <Route path="/previsao">
+              <Route  index element={<PaginaPrevisaoLocalizacao/>}/>
+            </Route>
+            
           </Fragment>
         ) : (
           <Fragment>

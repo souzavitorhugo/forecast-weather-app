@@ -14,9 +14,11 @@ export default function Menu() {
 
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
-                            <a className="nav-link active" aria-current="page" href="#">Previsão Atual</a>
-                            <a className="nav-link" href="#">Previsão para 5 dias</a>
-                            <a className="nav-link" href="#">Previsão para uma semana</a>
+                            
+                            <Link to="/cidade">
+                                <span class="nav-link"> Ver outras Cidades </span>
+                            </Link>
+            
                         </div>
                     </div>
 
