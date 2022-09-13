@@ -47,7 +47,7 @@ export default function PaginaInicial() {
 
             <LoadingHolder loading={!!loading} />
 
-            <main className='main-container box-teste'>
+            <main className='main-container'>
                 <div className="px-5 py-2 d-flex row justify-content-center align-items-center">
                     <h1 className="w-100 text-center"> Bem Vindo ao Forecast Weather App </h1>
 
