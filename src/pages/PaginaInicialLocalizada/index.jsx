@@ -3,16 +3,13 @@ import { Fragment, useEffect, useState } from 'react';
 import TempoAtual from '../../components/tempoAtual';
 import LoadingHolder from '../../components/loadingHolder';
 import { montaDtoPrevisaoTempo } from '../../components/util'
-import Menu from '../../components/nav'
+import CityForm from '../../components/city-form'
 
 import { previsaoLatLon } from '../../actions/requisitons'
 
 export default function PaginaInicialLocalizada(props) {
 
-    const [lat, setLat] = useState();
-    const [long, setLong] = useState();
     const [loading, setLoading] = useState(false)
-
     const [previsao, setPrevisao] = useState({})
 
     useEffect(() => {
@@ -38,7 +35,7 @@ export default function PaginaInicialLocalizada(props) {
         <Fragment>
             <LoadingHolder loading={!!loading} />
             <main className='main-container'>
-                <Menu />
+                <CityForm/>
                 <TempoAtual dtoPrevisao={previsao} />
             </main>
         </Fragment>

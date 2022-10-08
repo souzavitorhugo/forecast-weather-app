@@ -1,23 +1,26 @@
 import { API_URL, API_KEY, API_PADROES, API_LINK_ICONS} from './requisitionsPadrao';
+import { trataDadosSucesso, trataDadosErro} from '../components/util';
 const Axios = require('axios');
 
 export function previsaoLatLon (lat, long, callback) {
     Axios.get(`${API_URL}?lat=${lat}&lon=${long}&appid=${API_KEY}${API_PADROES}`)
         .then(function(response) {
-            callback(response);
+            trataDadosSucesso(response, callback);
         })
         .catch(function(err) {
-            throw err;
+            trataDadosErro(err, callback);
         })
 };
 
-export function previsaoGeolocation(cidade, callback) {
+export async function previsaoGeolocation(cidade, callback) {
     Axios.get(`${API_URL}?q=${cidade}&appid=${API_KEY}${API_PADROES}`)
         .then(function(response) {
-            callback(response)
+            let dtoSucesso = trataDadosSucesso(response);
+            callback(dtoSucesso);
         })
         .catch (function(err) {
-            throw err;
+            let dtoErro = trataDadosErro(err);
+            callback(dtoErro);
         })
 };
 

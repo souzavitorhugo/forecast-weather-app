@@ -1,14 +1,13 @@
 import { Fragment, useEffect, useState } from "react";
 
 import TempoAtual from '../../components/tempoAtual';
-import Menu from '../../components/nav'
-import LoadingHolder from '../../components/loadingHolder';
 import { useLocation, useNavigate } from "react-router-dom";
+
+import CityForm from '../../components/city-form'
 
 export default function PaginaPrevisaoLocalizacao() {
     
     const [previsao, setPrevisao] = useState({});
-    const [loading, setLoading] = useState();
     const navigate = useNavigate();
     const {state} = useLocation();
 
@@ -23,9 +22,8 @@ export default function PaginaPrevisaoLocalizacao() {
 
     return (
         <Fragment>
-            <LoadingHolder loading={!!loading}/>
             <main className='main-container'>
-                <Menu />
+                <CityForm/>
                 <TempoAtual dtoPrevisao={previsao} />
             </main>
         </Fragment>

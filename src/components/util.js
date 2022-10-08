@@ -25,7 +25,7 @@ export const montaDtoPrevisaoTempo = (props) => {
     'feelsLikeTemp': "",
     'linkIcon': "",
     'humidity': ""
-  }, sunriseSunsetTime = setSunriseSunsetTime(props.data.sys)
+  }, sunriseSunsetTime = setSunriseSunsetTime(props.data.sys);
 
   dtoPrevisao.sunriseSunsetTime = sunriseSunsetTime;
   dtoPrevisao.cityName = props.data.name;
@@ -33,7 +33,8 @@ export const montaDtoPrevisaoTempo = (props) => {
   dtoPrevisao.feelsLikeTemp = props.data.main.feels_like;
   dtoPrevisao.humidity = props.data.main.humidity;
   dtoPrevisao.linkIcon = montaLinkIconePrev(props.data.weather[0].icon);
-  dtoPrevisao.horaPrev = new Date()
+  dtoPrevisao.horaPrev = new Date();
+  dtoPrevisao.success = true;
 
   return dtoPrevisao
 };
@@ -61,3 +62,20 @@ const setSunriseSunsetTime = (time_obj) => {
   return returnObj;
 };
 
+export const trataDadosSucesso = (retorno_sucesso) => {
+  return montaDtoPrevisaoTempo(retorno_sucesso)
+}
+
+export const trataDadosErro = (retorno_erro) => {
+  let dtoRetorno = {};
+
+  switch(retorno_erro.response.status) {
+    case 404:
+      dtoRetorno = {
+        success: false,
+        message: 'Cidade não encontrada',
+      }
+      return dtoRetorno;
+  }
+
+}

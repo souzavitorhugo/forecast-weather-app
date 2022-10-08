@@ -16,7 +16,7 @@ export default function Menu() {
                         <div className="navbar-nav">
                             
                             <Link to="/cidade">
-                                <span class="nav-link"> Ver outras Cidades </span>
+                                <span className="nav-link"> Ver outras Cidades </span>
                             </Link>
             
                         </div>
