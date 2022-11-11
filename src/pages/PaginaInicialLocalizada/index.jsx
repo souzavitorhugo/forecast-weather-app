@@ -14,18 +14,18 @@ export default function PaginaInicialLocalizada(props) {
 
     useEffect(() => {
 
-        if (!(props.latitude && props.longitude)) return
+        if (!(props.latitude && props.longitude)) {debugger; return} 
 
         setLoading(true)
 
         previsaoLatLon(props.latitude, props.longitude, function (response) {
-            if (response.message) {
+            setLoading(false);
+            
+            if (!response.success) {
                 window.alert(response.message)
             };
-            setLoading(false);
-            if (response.status === 200) {
-                setPrevisao(montaDtoPrevisaoTempo(response));
-            }
+
+            setPrevisao(response);
         });
 
     }, [])

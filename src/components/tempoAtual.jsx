@@ -46,8 +46,8 @@ export default function TempoAtual(props)  {
         <Fragment>
 
             <LoadingHolder loading={!!loading} />
-
-            <div className='container-tempo-atual'>
+        
+            <div className='container-tempo-atual tarde-aberto'>
         
                 <div className="container-infos-atuais">
         

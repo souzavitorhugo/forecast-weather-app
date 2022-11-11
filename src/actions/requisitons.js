@@ -5,10 +5,12 @@ const Axios = require('axios');
 export function previsaoLatLon (lat, long, callback) {
     Axios.get(`${API_URL}?lat=${lat}&lon=${long}&appid=${API_KEY}${API_PADROES}`)
         .then(function(response) {
-            trataDadosSucesso(response, callback);
+            let dtoSucesso = trataDadosSucesso(response);
+            callback(dtoSucesso);
         })
         .catch(function(err) {
-            trataDadosErro(err, callback);
+            let dtoErro = trataDadosErro(err);
+            callback(dtoErro);
         })
 };
 

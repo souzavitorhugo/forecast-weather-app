@@ -56,7 +56,6 @@ input{
   align-items: center;
   justify-content: center;
 
-  background-color: var(--background-sunny);
   color: white;
 }
 
@@ -137,4 +136,14 @@ input{
   width: 30px;
   transition: all 0.2s linear;
   cursor: pointer;
+}
+
+.dia-aberto{
+  background: rgb(7,194,223);
+  background: linear-gradient(circle, rgba(7,194,223,1) 35%, rgba(4,159,217,1) 57%);
+}
+
+.tarde-aberto{
+  background: rgb(247,255,0);
+  background: linear-gradient(94deg, rgba(247,255,0,1) 0%, rgba(255,200,0,1) 19%, rgba(255,92,92,1) 95%, rgba(255,68,68,1) 100%);
 }

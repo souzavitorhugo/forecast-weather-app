@@ -26,17 +26,7 @@ export default function CityForm() {
         validationSchema,
         onSubmit: async values => {
 
-            setLoading(true);
-            // previsaoGeolocation(values.cidade, function(resp) {
-            //     if(!resp.status){
-            //         setLoading(false);
-            //         window.alert(resp.response.data.message)      
-            //     } 
-
-            //     let prevDto = montaDtoPrevisaoTempo(resp);
-            //     setLoading(false);
-            //     navigate('/previsao', {state: {dtoPrevisao: prevDto}});
-            // })
+            setLoading(false);
 
             previsaoGeolocation(values.cidade, function(resp) {
                 setLoading(false);
